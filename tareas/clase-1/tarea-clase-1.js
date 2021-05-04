@@ -67,7 +67,7 @@ function pruebaHoisting(){
 //pruebaHoisting();
 */
 
-/*
+
 var a = 1; //global
 let b = 2; //global
 
@@ -102,4 +102,4 @@ console.log('b vale: ' + b); // 2
 // console.log('d vale: ' + d); // error
 // console.log('e vale: ' + e); // error
 // console.log('f vale: ' + f); // error
-*/
+

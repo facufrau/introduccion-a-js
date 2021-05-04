@@ -124,7 +124,10 @@
 //       variable llamada nuestroTitulo.
 //       Utilizá console.log para ver lo que obtuviste!
 
-
+const nuestroTitulo = document.querySelector('h1');
+console.log(nuestroTitulo);
+console.log(nuestroTitulo.innerText);
+nuestroTitulo.innerText = 'Hola r/Argentina programa';
 
 
 
@@ -145,8 +148,14 @@
 */
 
 // TAREA: Obtené todos los elementos <li> de la página en una variable llamada mediaLinks.
+const mediaLinks = document.querySelectorAll('li');
+console.log(typeof(mediaLinks));
+console.log(mediaLinks);
 
-
+for (let i=0; i < mediaLinks.length; i++) {
+    console.log(mediaLinks[i].innerText);
+    mediaLinks[i].innerText = 'Hola!';
+}
 
 
 
@@ -222,7 +231,8 @@
 */
 
 // TAREA: Actualizá el valor del atributo 'src' de nuestra etiqueta 'img' a "img/kittens.jpeg".
-
+const nuestraImg = document.querySelector('img');
+nuestraImg.src = "img/kittens.jpeg";
 
 
 
@@ -288,3 +298,21 @@
 // Levántate, estira las piernas y celebra tu logro.                      //
 // ¡Creo que esto amerita un festejo!                                     //
 ////////////////////////////////////////////////////////////////////////////
+
+
+const botonIngreso = document.querySelector('#ingresar');
+
+botonIngreso.onclick = function(){
+    const edadUsuario = Number(document.querySelector('#edad-usuario').value);
+    let textoResultado;
+
+    if (edadUsuario < 18){
+        textoResultado = 'No podés ingresar';
+    }
+    else {
+        textoResultado = 'Podés ingresar';
+    }
+
+    document.querySelector('#resultado').innerText = textoResultado;
+    return false;
+}

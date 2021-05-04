@@ -42,11 +42,7 @@
 // TAREA: Crea tu propio array, llamado comidasFavoritas, y escribi dentro algunas
 //       cosas que te gustan.
 
-
-
-
-
-
+const comidasFavoritas = ['lomo', 'asado', 'helado de menta granizada', 'dulce de membrillo'];
 
 /*
     Tamaño del Array
@@ -64,10 +60,7 @@
 // TAREA: Verifique cuántos valores tiene en su array comidasFavoritas.
 // imprimi utilizando console.log el resultado.
 
-
-
-
-
+console.log(comidasFavoritas.length);
 
 /*
     Uso del Array
@@ -89,18 +82,14 @@
 */
 
 // TAREA: Obtené el tercer elemento de tu array comidasFavoritas e imprimilo utilizando console.log.
-
-
-
-
-
+console.log(comidasFavoritas[2]);
 
 /*
     Cambio de Valores en Arrays
     =========================
 
     También podemos reemplazar los valores dentro de los arrays asignando un nuevo valor a
-    un índice específico.
+    un índice específico.
 
     Ejemplo:
 
@@ -115,16 +104,11 @@
 // TAREA: Toma tu array de comidasFavoritas y reemplaza el primer valor
 // con cualquier otra cosa.
 
-
-
-
-
+console.log(comidasFavoritas);
+comidasFavoritas[0] = 'mollejas';
 
 // TAREA: console.log todo el array para verificar.
-
-
-
-
+console.log(comidasFavoritas);
 
 
 // TIP: ¡No te olvides que las posiciones de índice comienzan desde 0!
@@ -134,7 +118,7 @@
     ============
 
     Si deseas agregar nuevos valores a un array existente, podes usar el método
-     '.push()'. Push agregará un nuevo valor al final del array.
+     '.push()'. Push agregará un nuevo valor al final del array.
 
     Ejemplo:
 
@@ -146,25 +130,20 @@
 
 // TAREA: Extendamos tu lista de comidasFavoritas y agreguemos un valor más.
 
-
-
-
-
+console.log(comidasFavoritas);
+comidasFavoritas.push('Hamburguesas');
 
 // TAREA: console.log todo el array para verificar.
 
-
-
-
-
+console.log(comidasFavoritas);
 
 /*
     Nota acerca Arrays constantes
     =============================
 
     Un array es lo que se conoce como un "tipo de referencia". Lo que esto significa es que
-    incluso si un array se declara (crea) usando 'const', los valores *dentro* del
-    array todavía se pueden cambiar; el array en sí no se puede sobrescribir.
+    incluso si un array se declara (crea) usando 'const', los valores *dentro* del
+    array todavía se pueden cambiar; el array en sí no se puede sobrescribir.
 
     Ejemplo:
 
@@ -181,27 +160,23 @@
 
 // TAREA: Intenta crear un array como una constante y modifica los valores que contiene.
 
-
-
-
-
-
-
 // TAREA: Observa lo que sucede si agregas algo con.push(), cambias algo
 //       con notación de corchetes (array[1]) y
 //       asigna un nuevo array completamente nuevo a la constante
 
-
-
-
-
+const a = [1, 2, 3];
+console.log(a);
+a.push(5);
+a[0] = 4; // [4, 2, 3]
+console.log(a);
+//a = [1, 1, 1]; ERROR no se puede asignar a una constante.
 
 /*
     Bucles
     ======
     
     ¡La gente siempre ha sido perezosa, pero a veces avanza! A nosotros
-    no nos gusta repetir las mismas aburridas acciones una y otra vez, 
+    no nos gusta repetir las mismas aburridas acciones una y otra vez, 
     así que buscamos formas de evitarlo.
 
     La programación es igual. Por ejemplo, si quiero imprimir 10 veces 'JavaScript 
@@ -212,13 +187,13 @@
     Para esto usamos bucles.
 
     Cada ciclo debe tener tres cosas principales:
-     - un punto de partida
-     - una condición (punto final)
-     - un contador (un paso)
+     - un punto de partida
+     - una condición (punto final)
+     - un contador (un paso)
 
-     Si te olvidas uno de estos, ¡podes entrar en un bucle infinito!
+     Si te olvidas uno de estos, ¡podes entrar en un bucle infinito!
 
-     Veamos diferentes estructuras de bucle.
+     Veamos diferentes estructuras de bucle.
 
 */
 
@@ -243,12 +218,21 @@
     }
 */
 
+// TAREA
+
+let numero = 0;
+while (numero < 10) {
+    numero = numero + 1;
+}
+
 // TAREA: Usando un bucle 'while', decile a tu computadora que registre los números de
 //       diez a uno.
 
-
-
-
+numero = 10;
+while (numero > 0) {
+    console.log(`El número es: ${numero}`);
+    numero--;
+}
 
 
 /*
@@ -256,7 +240,7 @@
     ==========
 
     Los bucles for son muy similares al 'bucle while'. En un bucle for
-    se declara un contador en la declaración.
+    se declara un contador en la declaración.
 
     Ejemplo:
 
@@ -267,21 +251,32 @@
 */
 
 // TAREA: Imprimí cada 3er número del 3 al 22 usando un 'bucle for'.
+let i;
+for (i = 0; i <= 5; i++) {
+    console.log('Hola! ' + i);
+}
 
+for (i = 3; i <= 22; i += 3) {
+    console.log(i);
+}
 
-
-
-
+// Ejercicio:
+const notaParciales = [10, 5, 7, 8, 9, 7];
+let totalNotas = 0;
+for (i = 0; i < notaParciales.length; i++) {
+    totalNotas += notaParciales[i];
+}
+console.log(`Promedio = ${totalNotas / notaParciales.length}`);
 
 /*
     Iterando a traves de Arrays
     ===========================
 
     Ahora que conocemos los bucles, vamos a usar cada valor de mi lista de animales
-    y expresar mi amor por cada uno ¿Cómo lo voy a hacer?
+    y expresar mi amor por cada uno ¿Cómo lo voy a hacer?
 
-    Podemos usar un 'bucle for' para iterar a través de nuestro array y obtener cada valor
-    de eso.
+    Podemos usar un 'bucle for' para iterar a través de nuestro array y obtener cada valor
+    de eso.
 
     Nota: i++ es otra forma de expresar i = i + 1.
 
@@ -297,20 +292,16 @@
 // TAREA: Probalo con tu comidasFavoritas array.
 
 
-
-
-
-
 /*
     Bucles y Logica
     ===============
-    
+
     Traigamos bucles junto con las declaraciones if / else que aprendimos en
-    nivel 1, y hagamos algo interesante.
+    nivel 1, y hagamos algo interesante.
 
 
-    Contemos de 10 a 0 e imprimamos todos los números. Pero cuando lleguemos al
-    medio (5) imprimimos 'Estamos en el medio!'.
+    Contemos de 10 a 0 e imprimamos todos los números. Pero cuando lleguemos al
+    medio (5) imprimimos 'Estamos en el medio!'.
 
     Ejemplo:
 
