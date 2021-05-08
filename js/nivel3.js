@@ -229,6 +229,12 @@ for (let i=0; i < mediaLinks.length; i++) {
     const nuestroTwitter = document.querySelector('.twitter');
     ourTwitter.id = "sorpresa";
 */
+const nombre = prompt('Como te llamás?');
+nuestroTitulo.textContent = "Chau! " + nombre;
+
+const nuestroTwitter = document.querySelector('.twitter');
+nuestroTwitter.id = "sorpresa";
+
 
 // TAREA: Actualizá el valor del atributo 'src' de nuestra etiqueta 'img' a "img/kittens.jpeg".
 const nuestraImg = document.querySelector('img');
@@ -255,9 +261,12 @@ nuestraImg.src = "img/kittens.jpeg";
     const nuestroTwitter = document.querySelector('.twitter');
     nuestroTwitter.style.backgroundColor = 'white';
 */
+nuestroTwitter.style.backgroundColor = 'blue';
+nuestroTwitter.style.fontSize = '10px';
 
 // Tarea: Obtené cualquier elemento de la página y cambiale algunos estilos.
 
+nuestroTitulo.style.backgroundColor = 'blue';
 
 
 
@@ -282,13 +291,21 @@ nuestraImg.src = "img/kittens.jpeg";
     nodoPagina.appendChild(nuevoParrafo);
 */
 
+const nodoPagina = document.querySelector('body');
+const nuevoParrafo = document.createElement('p');
+const textoParrafo = document.createTextNode('Siiii!');
+nuevoParrafo.appendChild(textoParrafo);
+nodoPagina.appendChild(nuevoParrafo);
+
 // Tarea: Todavía seguís teniendo a los gatitos en tu pantalla? A mí me gusta el logo y los gatitos.
 //       Creá una nueva imagen con nuestro logo como fuente, y ponela
 //       en nuestra cabecera.
 //
 // P.S. También les podés dar estilos al nuevo nodo que creaste.
 
-
+const nodoImagen = document.createElement('img'); // <img>;
+nodoImagen.src = 'img/woman_bw.jpg';
+document.querySelector('header').appendChild(nodoImagen);
 
 
 
