@@ -48,7 +48,7 @@ function calcularPromedioEdades(edades) {
 }
 
 function crearIntegrante(nodoPadre, numeroDeIntegrante) {
-	    elementoInput = crearElementoInput();
+	elementoInput = crearElementoInput();
         elementoLabel = crearElementoLabel();
     
         textoLabel = document.createTextNode(`Integrante n°${numeroDeIntegrante} - Edad: `);
