@@ -2,7 +2,6 @@
 TAREA: Empezar preguntando cuánta gente hay en el grupo familiar.
 Crear tantos inputs+labels como gente haya para completar la edad de cada integrante.
 Al hacer click en "calcular", mostrar en un elemento pre-existente la mayor edad, la menor edad y el promedio del grupo familiar.
-
 Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuevamente, borrando los inputs ya creados (investigar cómo en MDN).
 */
 
@@ -48,6 +47,18 @@ function calcularPromedioEdades(edades) {
     return sumaEdades / edades.length;
 }
 
+function crearIntegrante(nodoPadre, numeroDeIntegrante) {
+	    elementoInput = crearElementoInput();
+        elementoLabel = crearElementoLabel();
+    
+        textoLabel = document.createTextNode(`Integrante n°${numeroDeIntegrante} - Edad: `);
+        elementoLabel.appendChild(textoLabel);
+
+        nodoPadre.appendChild(elementoLabel);
+        nodoPadre.appendChild(elementoInput);
+        nodoPadre.appendChild(document.createElement("br"));
+}
+
 
 const $botonSiguiente = document.querySelector("#siguiente");
 const $botonCalcular = document.querySelector("#boton-calcular");
@@ -64,16 +75,7 @@ $botonSiguiente.onclick = function() {
     document.querySelector("#numero-integrantes").setAttribute("disabled", "");
 
     for (let i = 1; i <= numeroIntegrantes; i++) {
-        elementoInput = crearElementoInput();
-
-        elementoLabel = crearElementoLabel();
-        textoLabel = document.createTextNode(`Integrante n°${i} - Edad: `);
-        elementoLabel.appendChild(textoLabel);
-
-        nodoIntegrantes.appendChild(elementoLabel);
-        nodoIntegrantes.appendChild(elementoInput);
-        nodoIntegrantes.appendChild(document.createElement("br"));
-
+        crearIntegrante(nodoIntegrantes, i);
     }
 }
 
