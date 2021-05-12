@@ -5,20 +5,6 @@ Al hacer click en "calcular", mostrar en un elemento pre-existente la mayor edad
 Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuevamente, borrando los inputs ya creados (investigar cómo en MDN).
 */
 
-function crearElementoInput() {
-    let elementoInput = document.createElement("input");
-    elementoInput.className = "edad-input";
-    elementoInput.type = "number";
-    return elementoInput
-}
-
-function crearElementoLabel() {
-    let elementoLabel = document.createElement("label");
-    elementoLabel.className = "edad-label";
-    
-    return elementoLabel
-}
-
 function calcularMayorEdad(edades) {
     let mayorEdad = edades[0];
     for (let i = 0; i < edades.length; i++) {
@@ -47,16 +33,33 @@ function calcularPromedioEdades(edades) {
     return sumaEdades / edades.length;
 }
 
-function crearIntegrante(nodoPadre, numeroDeIntegrante) {
-	elementoInput = crearElementoInput();
-        elementoLabel = crearElementoLabel();
-    
-        textoLabel = document.createTextNode(`Integrante n°${numeroDeIntegrante} - Edad: `);
-        elementoLabel.appendChild(textoLabel);
+function crearElementoInput() {
+    let elementoInput = document.createElement("input");
+    elementoInput.className = "edad-input";
+    elementoInput.type = "number";
+    return elementoInput;
+}
 
-        nodoPadre.appendChild(elementoLabel);
-        nodoPadre.appendChild(elementoInput);
-        nodoPadre.appendChild(document.createElement("br"));
+function crearElementoLabel() {
+    let elementoLabel = document.createElement("label");
+    elementoLabel.className = "edad-label";
+    
+    return elementoLabel;
+}
+
+function crearIntegrante(numeroDeIntegrante) {
+	elementoInput = crearElementoInput();
+    elementoLabel = crearElementoLabel();
+    elementoDiv = document.createElement("div");
+    
+    textoLabel = document.createTextNode(`Integrante n°${numeroDeIntegrante} - Edad: `);
+    elementoLabel.appendChild(textoLabel);
+
+    elementoDiv.appendChild(elementoLabel);
+    elementoDiv.appendChild(elementoInput);
+    elementoDiv.appendChild(document.createElement("br"));
+    
+    return elementoDiv;
 }
 
 
@@ -75,7 +78,7 @@ $botonSiguiente.onclick = function() {
     document.querySelector("#numero-integrantes").setAttribute("disabled", "");
 
     for (let i = 1; i <= numeroIntegrantes; i++) {
-        crearIntegrante(nodoIntegrantes, i);
+        nodoIntegrantes.appendChild(crearIntegrante(i));
     }
 }
 
