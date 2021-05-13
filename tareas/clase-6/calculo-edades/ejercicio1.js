@@ -85,9 +85,12 @@ $botonSiguiente.onclick = function() {
 $botonCalcular.onclick = function() {
     const nodosEdades = document.querySelectorAll(".edad-input");
     const listaEdades = [];
-
+    let edadIteracion;
     for (let i = 0; i < nodosEdades.length; i++) {
-        listaEdades.push(Number(nodosEdades[i].value));
+        edadIteracion = Number(nodosEdades[i].value);
+        if (edadIteracion !== NaN && edadIteracion !== null && edadIteracion > 0) {
+            listaEdades.push(edadIteracion);
+        }
     }
 
     const mayorEdad = calcularMayorEdad(listaEdades);
