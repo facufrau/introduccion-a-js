@@ -59,15 +59,19 @@ $botonCalcular.onclick = function () {
             listaSalarios.push(salarioIteracion);
         }
     }
-    let salarioAnualPromedio = calcularSalarioAnualPromedio(listaSalarios);
-
-    elementoMayorSalario.innerText = calcularMayorSalarioAnual(listaSalarios);
-    elementoMenorSalario.innerText = calcularMenorSalarioAnual(listaSalarios);
-    elementoSalarioAnualPromedio.innerText = salarioAnualPromedio;
-    elementoSalarioMensualPromedio.innerText = calcularSalarioMensualPromedio(salarioAnualPromedio);
-
-    mostrarResultados(elementoResultados);
-
+    const mayorSalarioAnual = calcularMayorSalarioAnual(listaSalarios);
+    const menorSalarioAnual = calcularMenorSalarioAnual(listaSalarios);
+    const salarioAnualPromedio = calcularSalarioAnualPromedio(listaSalarios);
+    const salarioMensualPromedio = calcularSalarioMensualPromedio(salarioAnualPromedio);
+    
+    if (mayorSalarioAnual && menorSalarioAnual && salarioAnualPromedio && salarioMensualPromedio) {
+        elementoMayorSalario.innerText = mayorSalarioAnual;
+        elementoMenorSalario.innerText = menorSalarioAnual;
+        elementoSalarioAnualPromedio.innerText = salarioAnualPromedio;
+        elementoSalarioMensualPromedio.innerText = salarioMensualPromedio;
+    
+        mostrarResultados(elementoResultados);
+    }
 }
 
 const $botonResetear = document.querySelector("#boton-resetear");
