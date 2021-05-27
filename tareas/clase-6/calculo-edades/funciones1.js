@@ -55,18 +55,32 @@ function crearIntegrante(numeroDeIntegrante) {
     return elementoDiv;
 }
 
-function ocultarBotonCalcular(elementoBoton) {
-    elementoBoton.className = "oculto";
+function ocultarElemento(elemento) {
+    elemento.className = "oculto";
 }
 
-function mostrarBotonCalcular(elementoBoton) {
-    elementoBoton.className = "";
+function mostrarElemento(elemento) {
+    elemento.className = "";
 }
 
-function ocultarResultados(elementoResultados) {
-    elementoResultados.className = "oculto"
+
+function validarEdad(edad) {
+    if (edad > 120) {
+        return "La edad no puede ser mayor a 120";
+    }
+    else if (edad < 1) {
+        return "La edad no puede ser menor a 1";
+    }
+    else if (!Number.isInteger(edad)) {
+        return "La edad debe ser un número entero";
+    }
+    else {
+        return "";
+    }
 }
 
-function mostrarResultados(elementoResultados) {
-    elementoResultados.className = ""
+function borrarElementosChild(elementoPadre) {
+    while (elementoPadre.firstChild) {
+        elementoPadre.removeChild(elementoPadre.firstChild);
+    }
 }

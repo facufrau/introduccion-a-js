@@ -18,45 +18,69 @@ $botonSiguiente.onclick = function() {
         nodoIntegrantes.appendChild(crearIntegrante(i));
     }
 
-    mostrarBotonCalcular($botonCalcular);    
+    mostrarElemento($botonCalcular);    
 }
 
 
 const elementoResultados = document.querySelector("#resultados");
+const elementoErrores = document.querySelector("#errores");
 const elementoMayorEdad = document.querySelector("#mayor-edad");
 const elementoMenorEdad = document.querySelector("#menor-edad");
 const elementoPromedioEdad = document.querySelector("#promedio-edad");
 
-$botonCalcular.onclick = function() {
+$botonCalcular.onclick = function(event) {
     const nodosEdades = document.querySelectorAll(".edad-input");
     const listaEdades = [];
+    let errores = [];
     let edadIteracion;
+    borrarElementosChild(elementoErrores);
+    
     for (let i = 0; i < nodosEdades.length; i++) {
         edadIteracion = Number(nodosEdades[i].value);
-        if (edadIteracion !== NaN && edadIteracion !== null && edadIteracion > 0) {
+        let validacion = validarEdad(edadIteracion);
+        if (validacion === "") {
             listaEdades.push(edadIteracion);
+            nodosEdades[i].classList.remove("error");
         }
+        else {
+            nodosEdades[i].classList.add("error");
+            errores.push(validacion);
+            }
     }
 
-    elementoMayorEdad.innerText = calcularMayorEdad(listaEdades);
-    elementoMenorEdad.innerText = calcularMenorEdad(listaEdades);
-    elementoPromedioEdad.innerText = calcularPromedioEdades(listaEdades);
-
-    mostrarResultados(elementoResultados);
+    if (errores.length === 0) {
+        ocultarElemento(elementoErrores);
+        
+        elementoMayorEdad.innerText = calcularMayorEdad(listaEdades);
+        elementoMenorEdad.innerText = calcularMenorEdad(listaEdades);
+        elementoPromedioEdad.innerText = calcularPromedioEdades(listaEdades);
+    
+        mostrarElemento(elementoResultados);
+        
+    }
+    else {
+        ocultarElemento(elementoResultados);
+        errores.forEach(function(error) {
+            const $error = document.createElement('li');
+            $error.innerText = error;
+            elementoErrores.appendChild($error);
+        })
+        mostrarElemento(elementoErrores);
+    }
 }
 
 
 const $botonResetear = document.querySelector("#boton-resetear");
 $botonResetear.onclick = function() {
-    while (nodoIntegrantes.firstChild) {
-        nodoIntegrantes.removeChild(nodoIntegrantes.firstChild);
-    }
+    borrarElementosChild(nodoIntegrantes);
+    borrarElementosChild(elementoErrores);
+    ocultarElemento(elementoErrores);
 
     $botonSiguiente.removeAttribute("disabled");
     document.querySelector("#numero-integrantes").removeAttribute("disabled");
     document.querySelector("#numero-integrantes").value = "";
 
-    ocultarBotonCalcular($botonCalcular);
-    ocultarResultados(elementoResultados);
+    ocultarElemento($botonCalcular);
+    ocultarElemento(elementoResultados);
     return false;
 }
