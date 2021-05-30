@@ -36,10 +36,10 @@ $botonCalcular.onclick = function(event) {
     borrarElementosChild(elementoErrores);
     
     for (let i = 0; i < nodosEdades.length; i++) {
-        edadIteracion = Number(nodosEdades[i].value);
+        edadIteracion = nodosEdades[i].value;
         let validacion = validarEdad(edadIteracion);
         if (validacion === "") {
-            listaEdades.push(edadIteracion);
+            listaEdades.push(Number(edadIteracion));
             nodosEdades[i].classList.remove("error");
         }
         else {

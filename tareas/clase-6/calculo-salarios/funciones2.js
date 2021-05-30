@@ -61,18 +61,28 @@ function crearIntegrante(numeroIntegrante) {
     return elementoDiv;
 }
 
-function ocultarBoton(elementoBoton) {
-    elementoBoton.className = "oculto";
+function ocultarElemento(elemento) {
+    elemento.className = "oculto";
 }
 
-function mostrarBoton(elementoBoton) {
-    elementoBoton.className = "";
+function mostrarElemento(elemento) {
+    elemento.className = ""
 }
 
-function ocultarResultados(elementoResultados) {
-    elementoResultados.className = "oculto";
+function borrarElementosChild(elementoPadre) {
+    while (elementoPadre.firstChild) {
+        elementoPadre.removeChild(elementoPadre.firstChild);
+    }
 }
 
-function mostrarResultados(elementoResultados) {
-    elementoResultados.className = "";
+function validarSalario(salario) {
+    if(!/^[0-9\.\-]+$/i.test(salario)) {
+        return "El salario solo puede contener números";
+    }
+    else if (Number(salario) < 1) {
+        return "El salario debe ser mayor a 0";
+    }
+    else {
+        return "";
+    }
 }

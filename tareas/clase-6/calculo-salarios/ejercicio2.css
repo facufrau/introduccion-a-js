@@ -9,3 +9,7 @@ h1 {
 .oculto {
     display: none;
 }
+
+.error {
+    border: 2px solid red;
+}

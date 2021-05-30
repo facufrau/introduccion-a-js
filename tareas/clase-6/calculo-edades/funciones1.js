@@ -63,15 +63,17 @@ function mostrarElemento(elemento) {
     elemento.className = "";
 }
 
-
 function validarEdad(edad) {
-    if (edad > 120) {
+    if(!/^[0-9\.\-]+$/i.test(edad)) {
+        return "La edad solo puede contener números";
+    }
+    else if (Number(edad) > 120) {
         return "La edad no puede ser mayor a 120";
     }
-    else if (edad < 1) {
+    else if (Number(edad) < 1) {
         return "La edad no puede ser menor a 1";
     }
-    else if (!Number.isInteger(edad)) {
+    else if (!Number.isInteger(Number(edad))) {
         return "La edad debe ser un número entero";
     }
     else {

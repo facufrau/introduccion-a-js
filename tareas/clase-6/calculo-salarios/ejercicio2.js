@@ -10,6 +10,7 @@ const $botonAgregar = document.querySelector("#boton-agregar");
 const $botonQuitar = document.querySelector("#boton-quitar");
 const $botonCalcular = document.querySelector("#boton-calcular");
 const elementoResultados = document.querySelector("#resultados");
+const elementoErrores = document.querySelector("#errores")
 const nodoIntegrantes = document.querySelector("#integrantes");
 let contadorIntegrantes = 0;
 
@@ -17,10 +18,10 @@ $botonAgregar.onclick = function () {
     contadorIntegrantes++;
     nodoIntegrantes.appendChild(crearIntegrante(contadorIntegrantes));
     if ($botonQuitar.className === "oculto") {
-        mostrarBoton($botonQuitar)
+        mostrarElemento($botonQuitar)
     }
     if ($botonCalcular.className === "oculto") {
-        mostrarBoton($botonCalcular)
+        mostrarElemento($botonCalcular)
     }
 }
 
@@ -36,9 +37,9 @@ $botonQuitar.onclick = function () {
         nodoIntegrantes.removeChild(nodoARemover);
         contadorIntegrantes--;
         if (contadorIntegrantes === 0) {
-            ocultarBoton($botonQuitar);
-            ocultarBoton($botonCalcular)
-            ocultarResultados(elementoResultados);
+            ocultarElemento($botonQuitar);
+            ocultarElemento($botonCalcular)
+            ocultarElemento(elementoResultados);
         }
     }
 }
@@ -52,37 +53,56 @@ const elementoSalarioMensualPromedio = document.querySelector("#salario-mensual-
 $botonCalcular.onclick = function () {
     const nodosSalarios = document.querySelectorAll(".salario-input");
     const listaSalarios = [];
+    let listaErrores = [];
     let salarioIteracion;
+    borrarElementosChild(elementoErrores);
+
     for (let i = 0; i < nodosSalarios.length; i++) {
-        salarioIteracion = Number(nodosSalarios[i].value);
-        if (salarioIteracion !== NaN && salarioIteracion !== null && salarioIteracion > 0) {
-            listaSalarios.push(salarioIteracion);
+        salarioIteracion = nodosSalarios[i].value
+        let validacion = validarSalario(salarioIteracion);        
+        
+        if (validacion === "") {
+            listaSalarios.push(Number(salarioIteracion));
+            nodosSalarios[i].classList.remove("error");
+        }
+        else {
+            nodosSalarios[i].classList.add("error");
+            listaErrores.push(validacion);
         }
     }
-    const mayorSalarioAnual = calcularMayorSalarioAnual(listaSalarios);
-    const menorSalarioAnual = calcularMenorSalarioAnual(listaSalarios);
-    const salarioAnualPromedio = calcularSalarioAnualPromedio(listaSalarios);
-    const salarioMensualPromedio = calcularSalarioMensualPromedio(salarioAnualPromedio);
-    
-    if (mayorSalarioAnual && menorSalarioAnual && salarioAnualPromedio && salarioMensualPromedio) {
-        elementoMayorSalario.innerText = mayorSalarioAnual;
-        elementoMenorSalario.innerText = menorSalarioAnual;
+
+    if (listaErrores.length === 0) {
+        ocultarElemento(elementoErrores);
+        
+        elementoMayorSalario.innerText = calcularMayorSalarioAnual(listaSalarios);
+        elementoMenorSalario.innerText = calcularMenorSalarioAnual(listaSalarios);
+        const salarioAnualPromedio = calcularSalarioAnualPromedio(listaSalarios);
         elementoSalarioAnualPromedio.innerText = salarioAnualPromedio;
-        elementoSalarioMensualPromedio.innerText = salarioMensualPromedio;
+        elementoSalarioMensualPromedio.innerText = calcularSalarioMensualPromedio(salarioAnualPromedio);
     
-        mostrarResultados(elementoResultados);
+        mostrarElemento(elementoResultados);
+        
+    }
+    else {
+        ocultarElemento(elementoResultados);
+        
+        listaErrores.forEach(function(error) {
+            const $error = document.createElement('li');
+            $error.innerText = error;
+            elementoErrores.appendChild($error);
+        })
+        mostrarElemento(elementoErrores);
     }
 }
 
 const $botonResetear = document.querySelector("#boton-resetear");
 $botonResetear.onclick = function () {
-    while (nodoIntegrantes.firstChild) {
-        nodoIntegrantes.removeChild(nodoIntegrantes.firstChild);
-    }
+    borrarElementosChild(nodoIntegrantes);
     contadorIntegrantes = 0;
-    ocultarBoton($botonCalcular);
-    ocultarBoton($botonQuitar);
-    ocultarResultados(elementoResultados);
+
+    ocultarElemento($botonCalcular);
+    ocultarElemento($botonQuitar);
+    ocultarElemento(elementoResultados);
 
     elementoMayorSalario.innerText = "";
     elementoMenorSalario.innerText = "";
