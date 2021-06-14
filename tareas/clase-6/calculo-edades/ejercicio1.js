@@ -11,14 +11,15 @@ const nodoIntegrantes = document.querySelector("#integrantes");
 
 $botonSiguiente.onclick = function() {
     const numeroIntegrantes = Number(document.querySelector("#numero-integrantes").value);
-    $botonSiguiente.setAttribute("disabled", "");
-    document.querySelector("#numero-integrantes").setAttribute("disabled", "");
-
-    for (let i = 1; i <= numeroIntegrantes; i++) {
-        nodoIntegrantes.appendChild(crearIntegrante(i));
+    if (numeroIntegrantes > 0) {
+        $botonSiguiente.setAttribute("disabled", "");
+        document.querySelector("#numero-integrantes").setAttribute("disabled", "");
+        for (let i = 1; i <= numeroIntegrantes; i++) {
+            nodoIntegrantes.appendChild(crearIntegrante(i));
+        }
+    
+        mostrarElemento($botonCalcular);   
     }
-
-    mostrarElemento($botonCalcular);    
 }
 
 

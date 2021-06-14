@@ -46,12 +46,13 @@ function crearElementoLabel() {
 }
 
 function crearIntegrante(numeroIntegrante) {
-    elementoInput = crearElementoInput();
-    elementoLabel = crearElementoLabel();
-    elementoDiv = document.createElement("div");
-    elementoDiv.id = "integrante-" + numeroIntegrante;
+    let elementoInput = crearElementoInput();
+    let elementoLabel = crearElementoLabel();
+    let elementoDiv = document.createElement("div");
+    elementoDiv.id = "integrante-" + (numeroIntegrante + 1);
+    elementoDiv.className = "integrante";
 
-    textoLabel = document.createTextNode(`Integrante n°${numeroIntegrante} - Salario anual ($ / año): `);
+    let textoLabel = document.createTextNode(`Integrante n°${numeroIntegrante + 1} - Salario anual ($ / año): `);
     elementoLabel.appendChild(textoLabel);
 
     elementoDiv.appendChild(elementoLabel);

@@ -12,11 +12,10 @@ const $botonCalcular = document.querySelector("#boton-calcular");
 const elementoResultados = document.querySelector("#resultados");
 const elementoErrores = document.querySelector("#errores")
 const nodoIntegrantes = document.querySelector("#integrantes");
-let contadorIntegrantes = 0;
+
 
 $botonAgregar.onclick = function () {
-    contadorIntegrantes++;
-    nodoIntegrantes.appendChild(crearIntegrante(contadorIntegrantes));
+    nodoIntegrantes.appendChild(crearIntegrante(document.querySelectorAll('.integrante').length));
     if ($botonQuitar.className === "oculto") {
         mostrarElemento($botonQuitar)
     }
@@ -28,15 +27,14 @@ $botonAgregar.onclick = function () {
 $botonQuitar.onclick = function () {
     let idARemover;
     let nodoARemover;
-    if (contadorIntegrantes === 0) {
+    if (document.querySelectorAll('.integrante').length === 0) {
         return false;
     }
     else {
-        idARemover = "#integrante-" + String(contadorIntegrantes);
+        idARemover = "#integrante-" + String(document.querySelectorAll('.integrante').length);
         nodoARemover = document.querySelector(idARemover);
         nodoIntegrantes.removeChild(nodoARemover);
-        contadorIntegrantes--;
-        if (contadorIntegrantes === 0) {
+        if (document.querySelectorAll('.integrante').length === 0) {
             ocultarElemento($botonQuitar);
             ocultarElemento($botonCalcular)
             ocultarElemento(elementoResultados);
@@ -98,7 +96,6 @@ $botonCalcular.onclick = function () {
 const $botonResetear = document.querySelector("#boton-resetear");
 $botonResetear.onclick = function () {
     borrarElementosChild(nodoIntegrantes);
-    contadorIntegrantes = 0;
 
     ocultarElemento($botonCalcular);
     ocultarElemento($botonQuitar);

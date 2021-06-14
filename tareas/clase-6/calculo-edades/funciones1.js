@@ -41,11 +41,11 @@ function crearElementoLabel() {
 }
 
 function crearIntegrante(numeroDeIntegrante) {
-	elementoInput = crearElementoInput();
-    elementoLabel = crearElementoLabel();
-    elementoDiv = document.createElement("div");
+	let elementoInput = crearElementoInput();
+    let elementoLabel = crearElementoLabel();
+    let elementoDiv = document.createElement("div");
     
-    textoLabel = document.createTextNode(`Integrante n°${numeroDeIntegrante} - Edad: `);
+    let textoLabel = document.createTextNode(`Integrante n°${numeroDeIntegrante} - Edad: `);
     elementoLabel.appendChild(textoLabel);
 
     elementoDiv.appendChild(elementoLabel);
