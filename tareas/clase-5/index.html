@@ -5,15 +5,24 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <title>Clase 5</title>
 </head>
 <body>
-    <form id="formulario-salario">
-        <label>Salario anual: <input type="number" id="salario-anual" placeholder="Ingresá tu salario anual"/></label>
-        <label>Salario mensual: <input type="number" id="salario-mensual" disabled placeholder="Salario mensual"/></label>
-        <button id="boton-calcular">Calcular</button>
-        <button type="reset">Limpiar</button>
-    </form>
+    <div class="container-fluid">
+        <div class="row">
+            <form id="formulario-salario">
+                <label class="form-label">Salario anual: 
+                    <input class="form-control" type="number" id="salario-anual" placeholder="Ingresá tu salario anual"/>
+                </label>
+                <label class="form-label">Salario mensual: 
+                    <input class="form-control" type="number" id="salario-mensual" disabled placeholder="Salario mensual"/>
+                </label>
+                <button id="boton-calcular" class="btn btn-primary">Calcular</button>
+                <button type="reset" class="btn btn-warning">Limpiar</button>
+            </form>
+        </div>
+      </div>
     <script src="tarea-clase-5.js"></script>
 </body>
 </html>
