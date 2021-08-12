@@ -18,7 +18,7 @@ $botonSiguiente.onclick = function() {
             nodoIntegrantes.appendChild(crearIntegrante(i));
         }
     
-        mostrarElemento($botonCalcular);   
+        mostrarElemento($botonCalcular.parentElement);   
     }
 }
 
@@ -81,7 +81,7 @@ $botonResetear.onclick = function() {
     document.querySelector("#numero-integrantes").removeAttribute("disabled");
     document.querySelector("#numero-integrantes").value = "";
 
-    ocultarElemento($botonCalcular);
+    ocultarElemento($botonCalcular.parentElement);
     ocultarElemento(elementoResultados);
     return false;
 }
