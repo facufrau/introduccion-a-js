@@ -16,12 +16,8 @@ const nodoIntegrantes = document.querySelector("#integrantes");
 
 $botonAgregar.onclick = function () {
     nodoIntegrantes.appendChild(crearIntegrante(document.querySelectorAll('.integrante').length));
-    if ($botonQuitar.className === "oculto") {
-        mostrarElemento($botonQuitar)
-    }
-    if ($botonCalcular.className === "oculto") {
-        mostrarElemento($botonCalcular)
-    }
+    activarElemento($botonCalcular);
+    activarElemento($botonQuitar);
 }
 
 $botonQuitar.onclick = function () {
@@ -35,8 +31,7 @@ $botonQuitar.onclick = function () {
         nodoARemover = document.querySelector(idARemover);
         nodoIntegrantes.removeChild(nodoARemover);
         if (document.querySelectorAll('.integrante').length === 0) {
-            ocultarElemento($botonQuitar);
-            ocultarElemento($botonCalcular)
+            bloquearElemento($botonCalcular)
             ocultarElemento(elementoResultados);
         }
     }
@@ -96,10 +91,11 @@ $botonCalcular.onclick = function () {
 const $botonResetear = document.querySelector("#boton-resetear");
 $botonResetear.onclick = function () {
     borrarElementosChild(nodoIntegrantes);
+    borrarElementosChild(elementoErrores);
 
-    ocultarElemento($botonCalcular);
-    ocultarElemento($botonQuitar);
-    ocultarElemento(elementoResultados);
+    bloquearElemento($botonCalcular);
+    bloquearElemento($botonQuitar);
+    bloquearElemento(elementoResultados);
 
     elementoMayorSalario.innerText = "";
     elementoMenorSalario.innerText = "";
