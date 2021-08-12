@@ -70,6 +70,14 @@ function mostrarElemento(elemento) {
     elemento.className = ""
 }
 
+function bloquearElemento(elemento) {
+    elemento.setAttribute("disabled", "");
+}
+
+function activarElemento(elemento) {
+    elemento.removeAttribute("disabled");
+}
+
 function borrarElementosChild(elementoPadre) {
     while (elementoPadre.firstChild) {
         elementoPadre.removeChild(elementoPadre.firstChild);
