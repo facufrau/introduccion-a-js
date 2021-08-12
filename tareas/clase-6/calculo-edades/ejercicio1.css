@@ -4,6 +4,10 @@ body {
     background-color: #c9d2ff;
     }
 
+h1 {
+        font-size: 24px;
+    }
+
 .oculto {
     display: none;
 }
