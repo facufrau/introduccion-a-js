@@ -6,26 +6,54 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ejercicio 2 - Clase 5</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Bienvenido!</h1>
-    <form id="formulario-datos">
-        <label class="etiquetas">Primer Nombre: 
-            <input type="text" id="primer-nombre" placeholder="Primer nombre"/>
-        </label><br>
-        <label class="etiquetas">Segundo Nombre: 
-            <input type="text" id="segundo-nombre" placeholder="Segundo nombre"/>
-        </label><br>
-        <label class="etiquetas">Apellido: 
-            <input type="text" id="apellido" placeholder="Apellido(s)"/>
-        </label><br>
-        <label class="etiquetas">Edad: 
-            <input type="number" id="edad" placeholder="Edad"/>
-        </label><br>
-        <button id="boton-mostrar">Mostrar!</button>
-        <button type="reset" id="boton-reset">Limpiar formulario</button>
-        <input type="text" size="100" id="informacion-usuario">
-    </form>
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Bienvenido!</h1>
+        </div>
+
+        <form id="formulario-datos">
+            <div class="row">
+                <label class="form-label">Primer Nombre: 
+                    <input type="text" id="primer-nombre" placeholder="Primer nombre"/>
+                </label>
+            </div>
+
+            <div class="row">
+                <label class="form-label">Segundo Nombre: 
+                    <input type="text" id="segundo-nombre" placeholder="Segundo nombre"/>
+                </label>
+            </div>
+
+            <div class="row">
+                <label class="form-label">Apellido: 
+                    <input type="text" id="apellido" placeholder="Apellido(s)"/>
+                </label>
+            </div>
+
+            <div class="row">
+                <label class="form-label">Edad: 
+                    <input type="number" id="edad" placeholder="Edad"/>
+                </label>
+            </div>
+
+            <div class="row">
+                <div class="col-md-auto">
+                    <button id="boton-mostrar" class="btn btn-primary">Mostrar!</button>
+                </div>
+                <div class="col-md-auto">
+                    <button type="reset" id="boton-reset" class="btn btn-warning">Limpiar formulario</button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-md-auto">
+                <input type="text" size="100" id="informacion-usuario">
+            </div>
+        </div>
+    </div>  
     <script src="ejercicio2.js"></script>
 </body>
 </html>

@@ -1,5 +1,11 @@
 body {
     font-family: "Helvetica", "sans-serif";
+    margin-left: 2vw;
+    background-color: #c9d2ff;
+    }
+
+h1 {
+        font-size: 24px;
     }
 
 .oculto {

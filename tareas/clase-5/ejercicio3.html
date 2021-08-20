@@ -5,44 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 3 - Clase 5</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <form id="duracion-videos">
-            <label>Clase 1: 
-                <input type="number" class="horas" placeholder="Horas"/>
-                <input type="number" class="minutos" placeholder="Minutos"/>
-                <input type="number" class="segundos" placeholder="Segundos"/>
-            </label>
-            <br>
-            <label>Clase 2: 
-                <input type="number" class="horas" placeholder="Horas"/>
-                <input type="number" class="minutos" placeholder="Minutos"/>
-                <input type="number" class="segundos" placeholder="Segundos"/>
-            </label>
-            <br>
-            <label>Clase 3: 
-                <input type="number" class="horas" placeholder="Horas"/>
-                <input type="number" class="minutos" placeholder="Minutos"/>
-                <input type="number" class="segundos" placeholder="Segundos"/>
-            </label>
-            <br>
-            <label>Clase 4: 
-                <input type="number" class="horas" placeholder="Horas"/>
-                <input type="number" class="minutos" placeholder="Minutos"/>
-                <input type="number" class="segundos" placeholder="Segundos"/>
-            </label>
-            <br>
-            <label>Clase 5: 
-                <input type="number" class="horas" placeholder="Horas"/>
-                <input type="number" class="minutos" placeholder="Minutos"/>
-                <input type="number" class="segundos" placeholder="Segundos"/>
-            </label>
-            <br>
-        <button id="calcular-duracion">Calcular duración</button>
-        <button type="reset">Limpiar formulario</button>
-    </form>
-    <br>
-    <strong id="duracion-total">La duración total de los videos es de: </strong>
+    <div class="container-fluid">
+        <form id="duracion-videos">
+                <label>Clase 1: 
+                    <input type="number" class="horas" placeholder="Horas"/>
+                    <input type="number" class="minutos" placeholder="Minutos"/>
+                    <input type="number" class="segundos" placeholder="Segundos"/>
+                </label>
+                <br>
+                <label>Clase 2: 
+                    <input type="number" class="horas" placeholder="Horas"/>
+                    <input type="number" class="minutos" placeholder="Minutos"/>
+                    <input type="number" class="segundos" placeholder="Segundos"/>
+                </label>
+                <br>
+                <label>Clase 3: 
+                    <input type="number" class="horas" placeholder="Horas"/>
+                    <input type="number" class="minutos" placeholder="Minutos"/>
+                    <input type="number" class="segundos" placeholder="Segundos"/>
+                </label>
+                <br>
+                <label>Clase 4: 
+                    <input type="number" class="horas" placeholder="Horas"/>
+                    <input type="number" class="minutos" placeholder="Minutos"/>
+                    <input type="number" class="segundos" placeholder="Segundos"/>
+                </label>
+                <br>
+                <label>Clase 5: 
+                    <input type="number" class="horas" placeholder="Horas"/>
+                    <input type="number" class="minutos" placeholder="Minutos"/>
+                    <input type="number" class="segundos" placeholder="Segundos"/>
+                </label>
+                <br>
+            <button class="btn btn-primary" id="calcular-duracion">Calcular duración</button>
+            <button class="btn btn-warning" type="reset">Limpiar formulario</button>
+        </form>
+        <strong id="duracion-total">La duración total de los videos es de: </strong>
+    </div>
     <script src="ejercicio3.js"></script>
 </body>
 </html>
