@@ -21,5 +21,8 @@
   "homepage": "https://github.com/facufrau/introduccion-a-js#readme",
   "dependencies": {
     "bootstrap": "^5.0.2"
+  },
+  "devDependencies": {
+    "cypress": "^8.3.0"
   }
 }
