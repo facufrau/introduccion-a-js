@@ -6,7 +6,7 @@ context('Cálculo de edades', () => {
     })
 
     describe('Utiliza formulario', () => {
-        it('no escribe número de integrantes', () => {
+        it('No escribe número de integrantes', () => {
             cy.get("#siguiente").click();
             cy.get('.edad-input').should('not.exist');
         })
@@ -15,6 +15,22 @@ context('Cálculo de edades', () => {
             cy.get('#numero-integrantes').type(3);
             cy.get("#siguiente").click();
             cy.get('.edad-input').should('have.length', 3);
+        })
+
+        it('Completa con edades no válidas', () => {
+            cy.get('.edad-input').each(($element) => {
+                cy.wrap($element).clear().type(9999);
+            })
+            cy.get('#boton-calcular').click();
+            cy.get('#errores').should('not.have.class', 'oculto');
+        })
+
+        it('Completa con edades válidas', () => {
+            cy.get('.edad-input').each(($element) => {
+                cy.wrap($element).clear().type(Math.ceil(Math.random() * 80));
+            })
+            cy.get('#boton-calcular').click();
+            cy.get('#resultados').should('not.have.class', 'oculto');
         })
     })
 });
