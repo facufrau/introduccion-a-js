@@ -1,3 +1,5 @@
+/// <reference types="cypress"/>
+
 const URL = "http://127.0.0.1:8080/tareas/clase-6/calculo-edades/ejercicio1.html";
 
 context('Cálculo de edades', () => {
@@ -26,11 +28,14 @@ context('Cálculo de edades', () => {
         })
 
         it('Completa con edades válidas', () => {
-            cy.get('.edad-input').each(($element) => {
-                cy.wrap($element).clear().type(Math.ceil(Math.random() * 80));
+            cy.get('.edad-input').each(($element, i) => {
+                cy.wrap($element).clear().type((i+1) * 10);
             })
             cy.get('#boton-calcular').click();
             cy.get('#resultados').should('not.have.class', 'oculto');
+            cy.get('#mayor-edad').should('have.text', '30');
+            cy.get('#menor-edad').should('have.text', '10');
+            cy.get('#promedio-edad').should('have.text', '20.00');
         })
     })
 });
